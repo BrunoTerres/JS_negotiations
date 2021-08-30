@@ -3,31 +3,31 @@ let campos = [
     document.querySelector('#quantidade'),
     document.querySelector('#valor'),
 ];
-console.log(campos);
 
 let tbody = document.querySelector('table tbody');
 
 
-document.querySelector('.form').addEventListener('submit', function(event) {
+document.querySelector('form').addEventListener('submit', function(event) {
     event.preventDefault();
-    let lugar = document.querySelector('#teste')
+    let tr = document.createElement('tr');
 
     campos.forEach(function(campo) {
 
-        let block = document.createElement('p');
-        block.textContent = campo.value;
-        lugar.appendChild(block)
+        let td = document.createElement('td');
+        td.textContent = campo.value;
+        tr.appendChild(td);
 
     });
 
+    let tdVolume = document.createElement('td');
+    tdVolume.textContent = campos[1].value * campos[2].value;
 
-    let blockVolume = document.createElement('p');
-    blockVolume.textContent = campos[1].value * campos[2].value;
+    tr.appendChild(tdVolume);
 
-    lugar.appendChild(blockVolume);
+    tbody.appendChild(tr)
 
-    campos[0].value = ''
-    campos[1].value = 1
-    campos[2].value = 0.0
+    campos[0] = ""
+    campos[1] = 1
+    campos[2] = 0.0
 
 });
